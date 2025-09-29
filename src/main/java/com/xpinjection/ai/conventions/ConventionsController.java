@@ -18,16 +18,23 @@ public class ConventionsController {
 
     @PostMapping(path = "/index")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void index() {
-        indexingService.index();
+    public void index(@RequestBody IndexRequest request) {
+        indexingService.index(request.mode());
     }
 
     @PostMapping(path = "/ask", consumes = MediaType.APPLICATION_JSON_VALUE)
     public AskResponse ask(@RequestBody AskRequest request) {
-        var answer = conventionsService.answer(request.question());
+        var answer = conventionsService.answer(request.question(), request.mode());
         return new AskResponse(answer);
     }
 
-    public record AskRequest(String question) {}
+    @PostMapping(path = "/askAdvanced", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public AskResponse askAdvanced(@RequestBody AskRequest request) {
+        var answer = conventionsService.answerAdvanced(request.question(), request.mode());
+        return new AskResponse(answer);
+    }
+
+    public record AskRequest(String question, ConventionsMode mode) {}
+    public record IndexRequest(ConventionsMode mode) {}
     public record AskResponse(String answer) {}
 }

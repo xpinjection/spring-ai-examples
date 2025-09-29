@@ -7,8 +7,6 @@ import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.ai.chat.prompt.SystemPromptTemplate;
 import org.springframework.ai.content.Media;
 import org.springframework.ai.converter.BeanOutputConverter;
-import org.springframework.ai.openai.OpenAiChatOptions;
-import org.springframework.ai.openai.api.ResponseFormat;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 import org.springframework.util.MimeTypeUtils;
@@ -26,7 +24,7 @@ public class CookingService {
     private final ChatClient chatClient;
 
     public CookingService(ChatClient.Builder chatClientBuilder) {
-        this.chatClient = chatClientBuilder
+        this.chatClient = chatClientBuilder.clone()
                 .defaultAdvisors(new SimpleLoggerAdvisor())
                 .build();
     }

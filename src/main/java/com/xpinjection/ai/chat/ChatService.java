@@ -19,7 +19,7 @@ public class ChatService {
     private final ChatMemory chatMemory;
 
     public ChatService(ChatClient.Builder chatClientBuilder, ChatMemory chatMemory) {
-        this.chatClient = chatClientBuilder
+        this.chatClient = chatClientBuilder.clone()
                 .defaultAdvisors(
                         new SimpleLoggerAdvisor(),
                         SafeGuardAdvisor.builder()
@@ -44,6 +44,7 @@ public class ChatService {
         var memoryAdvisor = MessageChatMemoryAdvisor.builder(chatMemory)
                 .conversationId(sessionId)
                 .build();
+
         return chatClient
                 .prompt()
                 .advisors(memoryAdvisor)
