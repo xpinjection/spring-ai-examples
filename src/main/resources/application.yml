@@ -6,13 +6,38 @@ spring:
       enabled: false
   ai:
     chat:
+      observations:
+        log-prompt: true
+        include-error-logging: true
+        log-completion: true
       client:
         enabled: true
+        observations:
+          log-prompt: true
+    tools:
+      observations:
+        include-content: true
     openai:
+      embedding:
+        options:
+          model: text-embedding-3-small
       chat:
         options:
           model: gpt-5-mini
           temperature: 1.0
+    vectorstore:
+      pgvector:
+        index-type: HNSW
+        distance-type: COSINE_DISTANCE
+        dimensions: 1536
+        initialize-schema: false
+        schema-validation: true
+
 logging:
   level:
     org.springframework.ai.chat.client.advisor: DEBUG
+
+management:
+  tracing:
+    sampling:
+      probability: 1.0

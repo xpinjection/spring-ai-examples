@@ -1,0 +1,21 @@
+services:
+  db:
+    image: pgvector/pgvector:0.8.1-pg17
+    container_name: postgresql
+    environment:
+      POSTGRES_DB: ai
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: 123qwe
+    ports:
+      - "5432:5432"
+
+  jaeger:
+    image: cr.jaegertracing.io/jaegertracing/jaeger:2.10.0
+    container_name: jaeger
+    ports:
+      - "16686:16686" # Jaeger UI
+      - "4317:4317"   # OTLP gRPC ingest
+      - "4318:4318"   # OTLP HTTP ingest
+      - "5778:5778"   # Remote sampling (HTTP)
+      - "9411:9411"   # Zipkin compatible ingest (optional)
+    restart: unless-stopped
