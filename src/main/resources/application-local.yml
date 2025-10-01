@@ -7,6 +7,11 @@ spring:
     username: root
     password: 123qwe
     driver-class-name: org.postgresql.Driver
+  ai:
+    mcp:
+      client:
+        stdio:
+          servers-configuration: classpath:/mcp-servers-config.json
 
 management:
   otlp:

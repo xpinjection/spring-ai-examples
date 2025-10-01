@@ -1,0 +1,21 @@
+{
+  "mcpServers": {
+    "brave-search": {
+      "command": "C:\\Program Files\\nodejs\\npx.cmd",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-brave-search"
+      ]
+    },
+    "postgres": {
+      "command": "docker",
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "mcp/postgres",
+        "postgresql://root:123qwe@host.docker.internal:5432/ai"
+      ]
+    }
+  }
+}
