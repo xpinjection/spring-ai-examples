@@ -25,11 +25,10 @@ public class ConventionsService {
     private final ChatClient.Builder rewriteQueryChatClientBuilder;
 
     public ConventionsService(ChatClient.Builder chatClientBuilder, VectorStore vectorStore) {
-        this.chatClient = chatClientBuilder.clone()
+        this.chatClient = chatClientBuilder
                 .defaultAdvisors(new SimpleLoggerAdvisor())
                 .build();
         this.rewriteQueryChatClientBuilder = chatClientBuilder.clone()
-                .defaultAdvisors(new SimpleLoggerAdvisor())
                 .defaultOptions(ChatOptions.builder()
                         .model("gpt-4o-mini")
                         .temperature(0.1).build());

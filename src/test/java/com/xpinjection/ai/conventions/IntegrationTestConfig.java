@@ -3,6 +3,7 @@ package com.xpinjection.ai.conventions;
 import io.micrometer.observation.ObservationRegistry;
 import org.springframework.ai.bedrock.converse.BedrockProxyChatModel;
 import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.ai.chat.client.advisor.SimpleLoggerAdvisor;
 import org.springframework.ai.chat.client.observation.ChatClientObservationConvention;
 import org.springframework.ai.model.chat.client.autoconfigure.ChatClientBuilderConfigurer;
 import org.springframework.ai.openai.OpenAiChatModel;
@@ -29,7 +30,8 @@ public class IntegrationTestConfig {
 
     @Bean
     ChatClient.Builder bedrockChatClientBuilder(BedrockProxyChatModel bedrockChatModel) {
-        return ChatClient.builder(bedrockChatModel);
+        return ChatClient.builder(bedrockChatModel)
+                .defaultAdvisors(new SimpleLoggerAdvisor());
     }
 
     @Bean

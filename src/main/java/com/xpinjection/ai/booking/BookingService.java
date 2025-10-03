@@ -27,7 +27,7 @@ public class BookingService {
     private final InMemoryFlightRepository repository;
 
     public BookingService(ChatClient.Builder chatClientBuilder, ChatMemory chatMemory, InMemoryFlightRepository repository) {
-        this.chatClient = chatClientBuilder.clone()
+        this.chatClient = chatClientBuilder
                 .defaultAdvisors(new SimpleLoggerAdvisor())
                 .build();
         this.chatMemory = chatMemory;

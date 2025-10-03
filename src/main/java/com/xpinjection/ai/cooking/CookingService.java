@@ -24,7 +24,7 @@ public class CookingService {
     private final ChatClient chatClient;
 
     public CookingService(ChatClient.Builder chatClientBuilder) {
-        this.chatClient = chatClientBuilder.clone()
+        this.chatClient = chatClientBuilder
                 .defaultAdvisors(new SimpleLoggerAdvisor())
                 .build();
     }

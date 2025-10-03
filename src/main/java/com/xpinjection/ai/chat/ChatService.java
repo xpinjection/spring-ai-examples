@@ -19,7 +19,7 @@ public class ChatService {
     private final ChatMemory chatMemory;
 
     public ChatService(ChatClient.Builder chatClientBuilder, ChatMemory chatMemory) {
-        this.chatClient = chatClientBuilder.clone()
+        this.chatClient = chatClientBuilder
                 .defaultAdvisors(
                         new SimpleLoggerAdvisor(),
                         SafeGuardAdvisor.builder()

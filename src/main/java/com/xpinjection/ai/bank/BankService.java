@@ -36,7 +36,7 @@ public class BankService {
     private final String dbSchema;
 
     public BankService(ChatClient.Builder chatClientBuilder, List<McpSyncClient> mcpClients) throws IOException {
-        this.chatClient = chatClientBuilder.clone()
+        this.chatClient = chatClientBuilder
                 .defaultAdvisors(new SimpleLoggerAdvisor())
                 .defaultToolCallbacks(new SyncMcpToolCallbackProvider(mcpClients))
                 .build();
