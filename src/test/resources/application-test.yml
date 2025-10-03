@@ -1,0 +1,14 @@
+spring:
+  ai:
+    bedrock:
+      aws:
+        region: eu-central-1
+      converse:
+        chat:
+          options:
+            model: anthropic.claude-3-5-sonnet-20240620-v1:0
+            temperature: 0.1
+  docker:
+    compose:
+      skip:
+        in-tests: false

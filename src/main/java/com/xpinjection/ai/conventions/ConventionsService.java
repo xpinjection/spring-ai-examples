@@ -63,7 +63,7 @@ public class ConventionsService {
                         .build())
                 .documentRetriever(VectorStoreDocumentRetriever.builder()
                         .filterExpression(new FilterExpressionBuilder().eq("mode", mode.name()).build())
-                        .similarityThreshold(0.6)
+                        .similarityThreshold(0.4)
                         .topK(3)
                         .vectorStore(vectorStore)
                         .build())
